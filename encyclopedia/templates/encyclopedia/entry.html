@@ -1,11 +1,17 @@
 {% extends "encyclopedia/layout.html" %}
 
 {% block title %}
-    Specific Entry
+    {{ title }}
 {% endblock %}
 
 {% block body %}
 
-    {{ entry }}
+    {% if entry == "" %}
+        <h1>
+            Entry not found.
+        </h1>
+    {% else %}
+        {{ entry|safe }}
+    {% endif %}
 
 {% endblock %}
