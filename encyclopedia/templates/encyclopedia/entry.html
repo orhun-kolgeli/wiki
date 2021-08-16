@@ -6,9 +6,9 @@
 
 {% block body %}
 
-    {% if entry == "" %}
+    {% if title == "Not found" %}
         <h1>
-            Entry not found.
+            The entry "{{ entry }}" does not exist.
         </h1>
     {% else %}
         {{ entry|safe }}

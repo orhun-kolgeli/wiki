@@ -21,7 +21,7 @@ def titles(request, title):
         })
     else:
         return render(request, "encyclopedia/entry.html", {
-            "entry": "",
+            "entry": title,
             "title": "Not found"
         })
     
