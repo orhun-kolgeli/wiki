@@ -6,11 +6,19 @@ from . import util
 
 
 def index(request):
+    """
+    Displays an unordered list of all entries available.
+    """
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries()
     })
 
 def titles(request, title):
+    """
+    Renders a page that displays the contents of the encyclopedia entry
+    whose title is given in the URL. 
+    Renders an error page if no such entry exists.
+    """
     if title in util.list_entries():
         mdfile = util.get_entry(title)
         markdowner = Markdown()

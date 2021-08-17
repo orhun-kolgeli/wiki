@@ -11,6 +11,7 @@
             The entry "{{ entry }}" does not exist.
         </h1>
     {% else %}
+        <!-- safe filter allows for an HTML string to be outputted -->
         {{ entry|safe }}
     {% endif %}
 
