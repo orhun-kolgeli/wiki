@@ -9,8 +9,17 @@ def index(request):
     """
     Displays an unordered list of all entries available.
     """
+    entries = util.list_entries()
+    if request.method == "POST":
+        result = []
+        for entry in entries:
+            if request.POST["q"] in entry:
+                result.append(entry)
+        return render(request, "encyclopedia/index.html", {
+        "entries": result
+    })
     return render(request, "encyclopedia/index.html", {
-        "entries": util.list_entries()
+        "entries": entries
     })
 
 def titles(request, title):
