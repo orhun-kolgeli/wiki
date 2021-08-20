@@ -11,19 +11,19 @@
     <body>
         <div class="row">
             <div class="sidebar col-lg-2 col-md-3">
-                <h2>Wiki</h2>
-                <form action="{% url 'index' %}" method="POST">
+                <h3>Wiki</h3>
+                <form action="{% url 'index' %}" method="POST" class="form-group">
                     {% csrf_token %}
-                    <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
+                    <input class="form-control search" type="text" name="q" placeholder="Search Encyclopedia">
                 </form>
                 <div>
-                    <a href="{% url 'index' %}">Home</a>
+                    <a class="btn btn-link" href="{% url 'index' %}">Home</a>
                 </div>
                 <div>
-                    <a href="{% url 'create' %}">Create New Page</a>
+                    <a class="btn btn-link" href="{% url 'create' %}">Create New Page</a>
                 </div>
                 <div>
-                    <a href="{% url 'random' %}">Random Page</a>
+                    <a class="btn btn-link" href="{% url 'random' %}">Random Page</a>
                 </div>
                 {% block nav %}
                 {% endblock %}

@@ -11,18 +11,19 @@
     <h1>Search Results for {{ query }}</h1>
     {% endif %}
 
-    <ul>
+    <div id="all-entries" class="list-group list-group-flush">
         {% if entries %}
             {% for entry in entries %}
-            <li>
-                <a href="{% url 'titles' entry %}">{{ entry }}</a>
-            </li>
+            <a class="list-group-item list-group-item-action"
+            href="{% url 'titles' entry %}">
+                {{ entry }}
+            </a>
             {% endfor %}
         {% else %}
-            <li>
+            <p>
                 No entries found.
-            </li>
+            </p>
         {% endif %}
-    </ul>
+    </div>
 
 {% endblock %}
