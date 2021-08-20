@@ -40,3 +40,9 @@ textarea {
 div {
     max-width: 100vw;
 }
+
+#edit-entry {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}

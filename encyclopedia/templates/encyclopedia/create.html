@@ -6,7 +6,7 @@ Create a new entry
 
 {% block body %}
 
-<form action="{% url 'create' %}" method="POST">
+<form class="form-group" action="{% url 'create' %}" method="POST">
     {% csrf_token %}
     {% if entry_exists %}
     <p>

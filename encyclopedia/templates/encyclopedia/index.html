@@ -16,7 +16,9 @@
             {% for entry in entries %}
             <a class="list-group-item list-group-item-action"
             href="{% url 'titles' entry %}">
-                {{ entry }}
+                <b>
+                    {{ entry }}
+                </b>
             </a>
             {% endfor %}
         {% else %}

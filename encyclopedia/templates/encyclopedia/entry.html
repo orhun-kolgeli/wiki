@@ -8,7 +8,8 @@
     <form action="{% url 'edit' %}" method="GET">
         {% csrf_token %}
         <input type="hidden" name="title" value="{{ title }}">
-        <input type="submit" value="Edit this entry">
+        <input id="edit-entry"class="btn btn-secondary" 
+        type="submit" value="Edit this entry">
     </form>
     {% if title == "Not found" %}
         <h1>
