@@ -70,10 +70,7 @@ def create(request):
                 })
             else:
                 content = new_entry.cleaned_data["content"]
-                entry_file = open(f"entries/{title}.md", "w")
-                for line in content:
-                    entry_file.write(line)
-                entry_file.close()
+                util.save_entry(title, content)
                 return HttpResponseRedirect(f"/wiki/{title}/")
         else:
             return render(request, "encyclopedia/create.html", {
@@ -85,5 +82,26 @@ def create(request):
             "new_entry": NewEntry(),
             "entry_exists": False
         })
+
+def edit(request):
+    if request.method == "GET":
+        title = request.GET["title"]
+        return render(request, "encyclopedia/edit.html", {
+            "edit_entry": EditEntry(initial={"content": util.get_entry(title)}),
+            "title": title
+            })
+    elif request.method == "POST":
+        edited_entry = EditEntry(request.POST)
+        if edited_entry.is_valid():
+            title = request.POST["title"]
+            content = edited_entry.cleaned_data["content"]
+            util.save_entry(title, content)
+            return HttpResponseRedirect(f"/wiki/{title}/")
+        else:
+            return render(request, "encyclopedia/edit.html", {
+            "edit_entry": edited_entry,
+            "title": title
+            })
+
     
 
