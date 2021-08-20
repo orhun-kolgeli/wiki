@@ -1,5 +1,6 @@
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 from markdown2 import Markdown
 
 from . import util
@@ -14,12 +15,17 @@ def index(request):
         result = []
         for entry in entries:
             if request.POST["q"] in entry:
+                if request.POST["q"] == entry:
+                    return HttpResponseRedirect(f"{entry}/")
                 result.append(entry)
         return render(request, "encyclopedia/index.html", {
-        "entries": result
+        "entries": result,
+        "all": False,
+        "query": request.POST["q"]
     })
     return render(request, "encyclopedia/index.html", {
-        "entries": entries
+        "entries": entries,
+        "all": True
     })
 
 def titles(request, title):
