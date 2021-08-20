@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django import forms
 from markdown2 import Markdown
+from random import choice
 
 from . import util
 import encyclopedia
@@ -84,6 +85,9 @@ def create(request):
         })
 
 def edit(request):
+    """
+    Allows the user to edit a specific entry’s Markdown content.
+    """
     if request.method == "GET":
         title = request.GET["title"]
         return render(request, "encyclopedia/edit.html", {
@@ -102,6 +106,13 @@ def edit(request):
             "edit_entry": edited_entry,
             "title": title
             })
+
+def random(request):
+    """
+    Takes the user to a random encyclopedia entry.
+    """
+    title = choice(util.list_entries())
+    return HttpResponseRedirect(f"/wiki/{title}/")
 
     
 
