@@ -15,7 +15,8 @@ class NewEntry(forms.Form):
         attrs={"class":"form-control"}))
 
 class EditEntry(forms.Form):
-    content = forms.CharField(label="Edit Content", widget=forms.Textarea)
+    content = forms.CharField(label="Edit Content", widget=forms.Textarea(
+        attrs={"class":"form-control"}))
 
 def index(request):
     """

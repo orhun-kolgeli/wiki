@@ -6,11 +6,11 @@ Edit {{ title }}
 
 {% block body %}
 
-<form action="{% url 'edit' %}" method="POST">
+<form class="form-group" action="{% url 'edit' %}" method="POST">
     {% csrf_token %}
     {{ edit_entry }}
     <input type="hidden" name="title" value="{{ title }}">
-    <input type="submit" value="Save Entry">
+    <input class="btn btn-primary" type="submit" value="Save Entry">
 </form>
 
 

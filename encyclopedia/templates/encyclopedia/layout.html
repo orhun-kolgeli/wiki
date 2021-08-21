@@ -11,7 +11,7 @@
     <body>
         <div class="row">
             <div class="sidebar col-lg-2 col-md-3">
-                <h3>Wiki</h3>
+                <h3 class="display-4">Wiki</h3>
                 <form action="{% url 'index' %}" method="POST" class="form-group">
                     {% csrf_token %}
                     <input class="form-control search" type="text" name="q" placeholder="Search Encyclopedia">
