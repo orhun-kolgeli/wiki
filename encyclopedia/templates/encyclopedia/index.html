@@ -5,10 +5,14 @@
 {% endblock %}
 
 {% block body %}
-    {% if all %}
-    <h1>All Pages</h1>
+    {% if message %}
+        {{ message }}
+    {% endif %}
+
+    {% if not search %}
+        <h1>All Pages</h1>
     {% else %}
-    <h1>Search Results for {{ query }}</h1>
+        <h1>Search Results for {{ query }}</h1>
     {% endif %}
 
     <div id="all-entries" class="list-group list-group-flush">

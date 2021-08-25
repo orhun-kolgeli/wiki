@@ -4,6 +4,7 @@ from django.urls import reverse
 from django import forms
 from markdown2 import Markdown
 from random import choice
+from django.contrib.auth import login, logout, authenticate
 
 from . import util
 import encyclopedia
@@ -31,12 +32,11 @@ def index(request):
                 result.append(entry)
         return render(request, "encyclopedia/index.html", {
         "entries": result,
-        "all": False,
+        "search": True,
         "query": request.POST["q"]
     })
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries(),
-        "all": True
     })
 
 def titles(request, title):
@@ -116,6 +116,31 @@ def random(request):
     """
     title = choice(util.list_entries())
     return HttpResponseRedirect(f"/wiki/{title}/")
+
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        current_user = authenticate(request, username=username, password=password)
+        if current_user is None:
+            return render(request, "encyclopedia/login.html", {
+                "message": "Invalid log in information."
+            })
+        else:
+            login(request, current_user)
+            return render(request, "encyclopedia/index.html", {
+                "message": "Successfully logged in!",
+                "entries": util.list_entries()
+            })
+    else:
+        return render(request, "encyclopedia/login.html")
+
+def logout_view(request):
+    logout(request)
+    return render(request, "encyclopedia/index.html", {
+        "message": "Successfully logged out.",
+        "entries": util.list_entries()
+    })
 
     
 
