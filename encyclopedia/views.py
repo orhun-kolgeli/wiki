@@ -124,7 +124,7 @@ def login_view(request):
         current_user = authenticate(request, username=username, password=password)
         if current_user is None:
             return render(request, "encyclopedia/login.html", {
-                "message": "Invalid log in information."
+                "message": "Invalid login information."
             })
         else:
             login(request, current_user)
