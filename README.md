@@ -4,4 +4,4 @@ Read encyclopedia entries about computer science, and create/edit them using Mar
 
 ## Usage
 
-TODO
+![Usage](https://github.com/orhun-kolgeli/wiki/blob/main/wiki.gif)
