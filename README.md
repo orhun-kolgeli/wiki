@@ -4,8 +4,6 @@ Read encyclopedia entries about computer science, and create/edit them using Mar
 
 ## Usage
 
-![Usage](https://github.com/orhun-kolgeli/wiki/blob/main/wiki.gif)
-
 ![Usage](https://github.com/orhun-kolgeli/wiki/blob/main/wiki-usage.gif)
 
 
